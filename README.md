@@ -1,6 +1,6 @@
 # Codex Ralph Plugin
 
-一个 Codex 插件：当任务还没做完但 Codex 停下时，可以自动让它继续。
+一个最小 Codex 插件：输入 `$autoc` 后，Codex 停下时自动继续。
 
 默认不会生效。只有你在任务里写 `$autoc`，它才会对这一次任务生效。
 
@@ -72,39 +72,19 @@ $autoc 10
 帮我重构这个模块，并更新测试。
 ```
 
-写清楚验收标准：
+写清楚验收文本：
 
 ```text
-$autoc 10 acceptance: tests pass and final answer summarizes the change.
+$autoc 10 acceptance: tests pass.
 帮我重构这个模块，并更新测试。
 ```
 
-兼容写法：
-
-```text
- /autoc 10 acceptance: tests pass.
-帮我修复问题。
-```
-
-注意：兼容写法里的 `/autoc` 前面必须有一个空格。Codex CLI 会把行首 `/xxx` 当成内置命令，直接输入 `/autoc` 会出现 `Unrecognized command`。
-
 ## 规则
 
-- 只有写了 `$autoc` 或 ` /autoc` 的那一次任务会触发。
-- 没写 `$autoc` 或 ` /autoc` 的任务不会触发。
-- 数字是最多继续次数，不是必须继续次数。
-- 如果任务提前完成，Codex 会正常结束。
-
-## 仓库结构
-
-```text
-.codex-plugin/plugin.json
-hooks/hooks.json
-hooks/auto_continue.py
-skills/autoc/SKILL.md
-```
-
-根目录就是插件目录，Codex 安装时不需要再进入子目录。
+- 只识别 `$autoc`。
+- 默认继续 `5` 次。
+- `$autoc 10` 就最多继续 `10` 次。
+- MVP 不做复杂完成判断，只按次数和你的验收文本提示 Codex 继续。
 
 ## License
 
