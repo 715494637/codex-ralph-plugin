@@ -1,61 +1,44 @@
 # Codex Auto Continue
 
-一个很小的 Codex 插件：当任务还没做完但 Codex 停下时，可以自动让它继续。
+一个 Codex 插件：当任务还没做完但 Codex 停下时，可以自动让它继续。
 
 默认不会生效。只有你在任务里写 `/autoc`，它才会对这一次任务生效。
 
-## 适合谁
+## 一分钟安装
 
-- 你经常跑长任务，Codex 偶尔停在半路。
-- 你不想每次手动发一句 `go on`。
-- 你又不希望所有任务都自动继续。
+### 1. 添加插件市场
 
-## 安装
-
-### 1. 下载这个仓库
+在终端运行：
 
 ```powershell
-git clone <this-repo-url>
-cd codex-auto-continue
+codex plugin marketplace add 715494637/codex-auto-continue
 ```
 
-### 2. 打开 Codex 配置
+### 2. 启用 hooks
 
-配置文件一般在：
+打开 Codex 配置文件：
 
 ```text
 ~/.codex/config.toml
 ```
 
-Windows 示例：
-
-```text
-C:\Users\你的用户名\.codex\config.toml
-```
-
-### 3. 加入这段配置
-
-把路径改成你自己下载后的仓库路径：
+确保里面有：
 
 ```toml
 [features]
 plugins = true
 plugin_hooks = true
-
-[marketplaces.codex-auto-continue]
-source_type = "local"
-source = "C:\\path\\to\\codex-auto-continue"
 ```
 
-### 4. 重启 Codex
+### 3. 安装插件
 
-重启后输入：
+重启 Codex，然后输入：
 
 ```text
 /plugins
 ```
 
-找到 `Auto Continue`，安装并启用它。
+找到 `Auto Continue`，安装并启用。
 
 ## 使用
 
@@ -89,11 +72,15 @@ source = "C:\\path\\to\\codex-auto-continue"
 - 数字是最多继续次数，不是必须继续次数。
 - 如果任务提前完成，Codex 会正常结束。
 
-## 插件位置
+## 仓库结构
 
 ```text
-plugins/auto-continue
+.codex-plugin/plugin.json
+hooks/hooks.json
+hooks/auto_continue.py
 ```
+
+根目录就是插件目录，Codex 安装时不需要再进入子目录。
 
 ## License
 

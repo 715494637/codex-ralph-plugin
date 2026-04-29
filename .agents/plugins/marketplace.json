@@ -7,8 +7,8 @@
     {
       "name": "auto-continue",
       "source": {
-        "source": "local",
-        "path": "./plugins/auto-continue"
+        "source": "url",
+        "url": "https://github.com/715494637/codex-auto-continue"
       },
       "policy": {
         "installation": "AVAILABLE",

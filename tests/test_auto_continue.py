@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-HOOK_PATH = ROOT / "plugins" / "auto-continue" / "hooks" / "auto_continue.py"
+HOOK_PATH = ROOT / "hooks" / "auto_continue.py"
 
 spec = importlib.util.spec_from_file_location("auto_continue", HOOK_PATH)
 auto_continue = importlib.util.module_from_spec(spec)
