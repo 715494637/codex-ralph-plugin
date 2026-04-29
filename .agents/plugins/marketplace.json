@@ -1,0 +1,20 @@
+{
+  "name": "codex-auto-continue",
+  "interface": {
+    "displayName": "Codex Auto Continue"
+  },
+  "plugins": [
+    {
+      "name": "auto-continue",
+      "source": {
+        "source": "local",
+        "path": "./plugins/auto-continue"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
