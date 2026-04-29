@@ -1,14 +1,14 @@
 {
-  "name": "codex-auto-continue",
+  "name": "codex-ralph-plugin",
   "interface": {
-    "displayName": "Codex Auto Continue"
+    "displayName": "Codex Ralph Plugin"
   },
   "plugins": [
     {
-      "name": "auto-continue",
+      "name": "codex-ralph-plugin",
       "source": {
         "source": "url",
-        "url": "https://github.com/715494637/codex-auto-continue"
+        "url": "https://github.com/715494637/codex-ralph-plugin"
       },
       "policy": {
         "installation": "AVAILABLE",

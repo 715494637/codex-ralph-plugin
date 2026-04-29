@@ -159,8 +159,8 @@ class AutoContinueTests(unittest.TestCase):
                 transcript.unlink(missing_ok=True)
 
         self.assertIn('"decision": "block"', first.stdout)
-        self.assertIn("Auto-continue pass 1/2", first.stdout)
-        self.assertIn("Auto-continue pass 2/2", second.stdout)
+        self.assertIn("Codex Ralph Plugin pass 1/2", first.stdout)
+        self.assertIn("Codex Ralph Plugin pass 2/2", second.stdout)
         self.assertEqual(third.stdout.strip(), "")
 
 

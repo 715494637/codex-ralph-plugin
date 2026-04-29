@@ -1,4 +1,4 @@
-# Codex Auto Continue
+# Codex Ralph Plugin
 
 一个 Codex 插件：当任务还没做完但 Codex 停下时，可以自动让它继续。
 
@@ -11,7 +11,7 @@
 在终端运行：
 
 ```powershell
-codex plugin marketplace add 715494637/codex-auto-continue
+codex plugin marketplace add 715494637/codex-ralph-plugin
 ```
 
 ### 2. 启用 hooks
@@ -38,7 +38,7 @@ plugin_hooks = true
 /plugins
 ```
 
-找到 `Auto Continue`，安装并启用。
+找到 `Codex Ralph Plugin`，安装并启用。
 
 ## 使用
 

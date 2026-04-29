@@ -198,7 +198,7 @@ def event_text(record: dict) -> tuple[str | None, str]:
 def is_auto_continue_prompt(text: str) -> bool:
     lowered = text.lower()
     return (
-        "auto-continue pass" in lowered
+        "codex ralph plugin pass" in lowered
         or "<hook_prompt" in lowered
         or "hook_run_id=" in lowered
     )
@@ -293,7 +293,7 @@ def state_file(payload: dict) -> Path:
     if data_root:
         root = Path(data_root)
     else:
-        root = Path(payload.get("cwd") or ".") / ".codex-auto-continue"
+        root = Path(payload.get("cwd") or ".") / ".codex-ralph-plugin"
     session_id = str(payload.get("session_id") or "unknown-session")
     turn_id = str(payload.get("turn_id") or "unknown-turn")
     digest = hashlib.sha256(f"{session_id}:{turn_id}".encode("utf-8")).hexdigest()[:32]
@@ -358,7 +358,7 @@ def main() -> int:
     save_count(path, next_count)
     criteria_text = criteria or "the user's latest requested work is complete"
     reason = (
-        f"Auto-continue pass {next_count}/{max_count}. The user explicitly enabled this turn "
+        f"Codex Ralph Plugin pass {next_count}/{max_count}. The user explicitly enabled this turn "
         "with /autoc. Review the full visible conversation history and continue only "
         "while work remains unfinished. Acceptance criteria: "
         f"{criteria_text}. If the criteria are satisfied, stop doing extra work, provide the "
