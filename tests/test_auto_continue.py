@@ -75,6 +75,19 @@ class AutoContinueTests(unittest.TestCase):
         self.assertEqual(context["directive"]["criteria"], "tests pass\nfinish task")
         self.assertTrue(auto_continue.should_continue(context, 0))
 
+    def test_leading_space_autoc_enables_directive(self):
+        context = transcript_context(
+            [
+                turn("t1"),
+                message("user", " /autoc 1 acceptance: tests pass\nfinish task"),
+                message("assistant", "I will continue"),
+            ]
+        )
+        self.assertTrue(context["directive"]["enabled"])
+        self.assertEqual(context["directive"]["max_count"], 1)
+        self.assertEqual(context["directive"]["criteria"], "tests pass\nfinish task")
+        self.assertTrue(auto_continue.should_continue(context, 0))
+
     def test_custom_limit_is_enforced(self):
         context = transcript_context(
             [

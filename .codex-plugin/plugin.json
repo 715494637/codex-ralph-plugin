@@ -12,6 +12,6 @@
       "Stop hook",
       "Guarded continuation"
     ],
-    "defaultPrompt": "/autoc 5 acceptance: finish the requested task, verify it, and summarize the result."
+    "defaultPrompt": " /autoc 5 acceptance: finish the requested task, verify it, and summarize the result."
   }
 }
