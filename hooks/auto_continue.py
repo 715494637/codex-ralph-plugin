@@ -28,7 +28,7 @@ TOOL_HINT_PATTERNS = [
     r"\b(apply_patch|shell_command|exec_command|local_shell)\b",
 ]
 
-COMMAND_PATTERN = re.compile(r"^\s*/autoc\b(?P<rest>.*)$", re.IGNORECASE)
+COMMAND_PATTERN = re.compile(r"^\s*(?:/autoc|\$autoc)\b(?P<rest>.*)$", re.IGNORECASE)
 COUNT_PATTERN = re.compile(
     r"^\s*(?:-{0,2}(?:max|count|times|loops)|\u6b21\u6570|\u5faa\u73af)?\s*[=:\uff1a]?\s*(?P<count>\d{1,3})\b",
     re.IGNORECASE,
@@ -359,7 +359,7 @@ def main() -> int:
     criteria_text = criteria or "the user's latest requested work is complete"
     reason = (
         f"Codex Ralph Plugin pass {next_count}/{max_count}. The user explicitly enabled this turn "
-        "with /autoc. Review the full visible conversation history and continue only "
+        "with $autoc or /autoc. Review the full visible conversation history and continue only "
         "while work remains unfinished. Acceptance criteria: "
         f"{criteria_text}. If the criteria are satisfied, stop doing extra work, provide the "
         "final concise answer, and append "

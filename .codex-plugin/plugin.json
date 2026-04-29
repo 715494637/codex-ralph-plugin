@@ -1,17 +1,18 @@
 {
   "name": "codex-ralph-plugin",
   "version": "0.1.0",
-  "description": "Adds an opt-in Stop hook that continues only when the current turn includes /autoc.",
+  "description": "Adds an opt-in Stop hook that continues only when the current turn includes $autoc.",
+  "skills": "./skills/",
   "hooks": "./hooks/hooks.json",
   "interface": {
     "displayName": "Codex Ralph Plugin",
     "shortDescription": "Continue unfinished turns automatically",
-    "longDescription": "Runs a guarded Stop hook only for turns where the user explicitly writes /autoc. The directive can include a retry count and acceptance criteria.",
+    "longDescription": "Runs a guarded Stop hook only for turns where the user explicitly writes $autoc. The directive can include a retry count and acceptance criteria.",
     "category": "Productivity",
     "capabilities": [
       "Stop hook",
       "Guarded continuation"
     ],
-    "defaultPrompt": " /autoc 5 acceptance: finish the requested task, verify it, and summarize the result."
+    "defaultPrompt": "$autoc 5 acceptance: finish the requested task, verify it, and summarize the result."
   }
 }

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Auto Continue"
+  short_description: "Continue unfinished Codex tasks"
+  default_prompt: "Use $autoc 5 acceptance: finish the requested task, verify it, and summarize the result."
+
+policy:
+  allow_implicit_invocation: false

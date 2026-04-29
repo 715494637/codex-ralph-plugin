@@ -88,6 +88,19 @@ class AutoContinueTests(unittest.TestCase):
         self.assertEqual(context["directive"]["criteria"], "tests pass\nfinish task")
         self.assertTrue(auto_continue.should_continue(context, 0))
 
+    def test_dollar_autoc_enables_directive(self):
+        context = transcript_context(
+            [
+                turn("t1"),
+                message("user", "$autoc 10 acceptance: build passes"),
+                message("assistant", "I will continue"),
+            ]
+        )
+        self.assertTrue(context["directive"]["enabled"])
+        self.assertEqual(context["directive"]["max_count"], 10)
+        self.assertEqual(context["directive"]["criteria"], "build passes")
+        self.assertTrue(auto_continue.should_continue(context, 0))
+
     def test_custom_limit_is_enforced(self):
         context = transcript_context(
             [
@@ -105,6 +118,17 @@ class AutoContinueTests(unittest.TestCase):
             [
                 turn("t1"),
                 message("user", "/autocx 10 acceptance: build passes"),
+                message("assistant", "I will continue"),
+            ]
+        )
+        self.assertFalse(context["directive"]["enabled"])
+        self.assertFalse(auto_continue.should_continue(context, 0))
+
+    def test_longer_dollar_command_does_not_enable(self):
+        context = transcript_context(
+            [
+                turn("t1"),
+                message("user", "$autocx 10 acceptance: build passes"),
                 message("assistant", "I will continue"),
             ]
         )
