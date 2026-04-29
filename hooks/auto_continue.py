@@ -9,7 +9,7 @@ from pathlib import Path
 
 DEFAULT_COUNT = 5
 MAX_TAIL_BYTES = 1_000_000
-DIRECTIVE_RE = re.compile(r"^\s*\$autoc\b\s*(?:(\d{1,3})\b)?\s*(.*)$", re.I)
+DIRECTIVE_RE = re.compile(r"^\s*\$codex-ralph-plugin\b\s*(?:(\d{1,3})\b)?\s*(.*)$", re.I)
 
 
 def payload():
@@ -131,7 +131,8 @@ def main():
 
     reason = (
         f"Codex Ralph Plugin pass {count}/{max_count}. "
-        f"Continue the task. Acceptance: {criteria or 'finish the latest request'}."
+        f"Continue the task. The number after the marker is the pass limit, not task content. "
+        f"Acceptance: {criteria or 'finish the latest request'}."
     )
     print(json.dumps({"decision": "block", "reason": reason}, ensure_ascii=True))
     return 0

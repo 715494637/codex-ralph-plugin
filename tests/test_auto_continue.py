@@ -33,17 +33,25 @@ def transcript(records):
 
 
 class AutoContinueTests(unittest.TestCase):
-    def test_parse_dollar_autoc(self):
-        path = transcript([user("$autoc 10 acceptance: tests pass")])
+    def test_parse_marker(self):
+        path = transcript([user("$codex-ralph-plugin 10 acceptance: tests pass")])
         try:
             parsed = auto_continue.directive({"transcript_path": str(path)})
         finally:
             path.unlink(missing_ok=True)
         self.assertEqual(parsed, (10, "tests pass"))
 
+    def test_count_is_not_task_text(self):
+        path = transcript([user("$codex-ralph-plugin 5 say hello")])
+        try:
+            parsed = auto_continue.directive({"transcript_path": str(path)})
+        finally:
+            path.unlink(missing_ok=True)
+        self.assertEqual(parsed, (5, "say hello"))
+
     def test_hook_blocks_until_limit(self):
         with tempfile.TemporaryDirectory() as data_dir:
-            path = transcript([user("$autoc 2 acceptance: tests pass")])
+            path = transcript([user("$codex-ralph-plugin 2 acceptance: tests pass")])
             payload = {
                 "cwd": str(ROOT),
                 "session_id": "session-1",

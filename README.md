@@ -1,8 +1,8 @@
 # Codex Ralph Plugin
 
-一个最小 Codex 插件：输入 `$autoc` 后，Codex 停下时自动继续。
+一个最小 Codex 插件：输入 `$codex-ralph-plugin` 后，Codex 停下时自动继续。
 
-默认不会生效。只有你在任务里写 `$autoc`，它才会对这一次任务生效。
+默认不会生效。只有你在任务里写 `$codex-ralph-plugin`，它才会对这一次任务生效。
 
 ## 一分钟安装
 
@@ -59,7 +59,7 @@ codex --enable plugin_hooks
 最简单写法：
 
 ```text
-$autoc
+$codex-ralph-plugin
 帮我修复这个 bug，并运行相关测试。
 ```
 
@@ -68,22 +68,23 @@ $autoc
 指定最多继续 `10` 次：
 
 ```text
-$autoc 10
+$codex-ralph-plugin 10
 帮我重构这个模块，并更新测试。
 ```
 
 写清楚验收文本：
 
 ```text
-$autoc 10 acceptance: tests pass.
+$codex-ralph-plugin 10 acceptance: tests pass.
 帮我重构这个模块，并更新测试。
 ```
 
 ## 规则
 
-- 只识别 `$autoc`。
+- 只识别 `$codex-ralph-plugin`。
 - 默认继续 `5` 次。
-- `$autoc 10` 就最多继续 `10` 次。
+- `$codex-ralph-plugin 10` 就最多继续 `10` 次。
+- 数字只表示最多继续次数，不是任务内容。
 - MVP 不做复杂完成判断，只按次数和你的验收文本提示 Codex 继续。
 
 ## License

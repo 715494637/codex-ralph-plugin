@@ -1,7 +1,0 @@
-interface:
-  display_name: "Auto Continue"
-  short_description: "Continue current Codex task"
-  default_prompt: "Use $autoc 5 acceptance: tests pass."
-
-policy:
-  allow_implicit_invocation: false

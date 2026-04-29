@@ -1,0 +1,7 @@
+interface:
+  display_name: "Codex Ralph Plugin"
+  short_description: "Continue current Codex task"
+  default_prompt: "Use $codex-ralph-plugin 5 acceptance: tests pass."
+
+policy:
+  allow_implicit_invocation: false
